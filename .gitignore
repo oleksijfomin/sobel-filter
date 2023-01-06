@@ -102,3 +102,10 @@ dist
 
 # TernJS port file
 .tern-port
+
+.idea
+
+# Public build files (consider excluding later on)
+# public/SobelFilter.js
+# public/SobelFilter.d.ts
+# public/SobelFilter.js.map
