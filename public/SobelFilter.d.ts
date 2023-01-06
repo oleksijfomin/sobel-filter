@@ -1,3 +1,8 @@
+type TImageData = {
+    data: Array<number>;
+    width: number;
+    height: number;
+};
 type TKernelX = [
     [
         -1,
@@ -37,16 +42,15 @@ declare const GREYSCALE_MAGNITUDE_ALPHA = 255;
 declare class SobelFilter {
     protected kernelX: TKernelX;
     protected kernelY: TKernelY;
-    protected imageData: ImageData;
+    protected imageData: TImageData;
     protected greyscaleData: number[];
-    constructor(imageData: ImageData);
+    constructor(imageData: TImageData);
     protected highOrderPixelAt: (data: Uint8ClampedArray | Array<number>, width: number) => TPixelAt;
     protected troughPixels: (callback: (x: number, y: number) => void) => void;
-    protected calcGrayscaleData: (imageData: ImageData) => number[];
+    protected calcGrayscaleData: (imageData: TImageData) => number[];
     protected calcPixel: (kernel: TKernelX | TKernelY, pixelAt: TPixelAt, x: number, y: number) => number;
     protected calcMagnitude: (pixelX: number, pixelY: number) => number;
-    protected optimizeSobelDataArray: (sobelData: number[]) => Array<number> | Uint8ClampedArray;
-    calcSobelX: () => Array<number> | Uint8ClampedArray;
-    calcSobelY: () => Array<number> | Uint8ClampedArray;
-    calcSobelXY: () => Array<number> | Uint8ClampedArray;
+    applyKernelX: () => TImageData;
+    applyKernelY: () => TImageData;
+    applyKernelXY: () => TImageData;
 }

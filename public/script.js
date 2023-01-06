@@ -29,8 +29,8 @@ function drawImage(event) {
   const sobelFilter = new SobelFilter(imageData);
 
   queueMicrotask(() => {
-    const sobelDataX = sobelFilter.calcSobelX();
-    const sobelImageDataX = toImageData(sobelDataX, width, height);
+    const imageData = sobelFilter.applyKernelX();
+    const sobelImageDataX = toImageData(imageData.data, width, height);
 
     const canvasSobelX = document.getElementById('canvas-sobel-x');
     const contextSobelX = canvasSobelX.getContext('2d');
@@ -40,8 +40,8 @@ function drawImage(event) {
     contextSobelX.putImageData(sobelImageDataX, 0, 0);
   });
   queueMicrotask(() => {
-    const sobelDataY = sobelFilter.calcSobelY();
-    const sobelImageDataY = toImageData(sobelDataY, width, height);
+    const imageData = sobelFilter.applyKernelY();
+    const sobelImageDataY = toImageData(imageData.data, width, height);
 
     const canvasSobelY = document.getElementById('canvas-sobel-y');
     const contextSobelY = canvasSobelY.getContext('2d');
@@ -51,8 +51,8 @@ function drawImage(event) {
     contextSobelY.putImageData(sobelImageDataY, 0, 0);
   });
   queueMicrotask(() => {
-    const sobelDataXY = sobelFilter.calcSobelXY();
-    const sobelImageDataXY = toImageData(sobelDataXY, width, height);
+    const imageData = sobelFilter.applyKernelXY();
+    const sobelImageDataXY = toImageData(imageData.data, width, height);
 
     const canvasSobelXY = document.getElementById('canvas-sobel-xy');
     const contextSobelXY = canvasSobelXY.getContext('2d');

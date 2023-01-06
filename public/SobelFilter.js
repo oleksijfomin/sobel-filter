@@ -61,15 +61,10 @@ class SobelFilter {
     calcMagnitude = (pixelX, pixelY) => {
         return Math.sqrt((pixelX * pixelX) + (pixelY * pixelY)) >>> 0;
     };
-    optimizeSobelDataArray = (sobelData) => {
-        if (typeof Uint8ClampedArray === 'function') {
-            return new Uint8ClampedArray(sobelData);
-        }
-        return sobelData;
-    };
-    calcSobelX = () => {
+    applyKernelX = () => {
         const { kernelX } = this;
         const width = this.imageData.width;
+        const height = this.imageData.height;
         const pixelAt = this.highOrderPixelAt(this.greyscaleData, width);
         const sobelData = [];
         this.troughPixels((x, y) => {
@@ -77,11 +72,16 @@ class SobelFilter {
             const magnitude = this.calcMagnitude(pixelX, 0);
             sobelData.push(magnitude, magnitude, magnitude, GREYSCALE_MAGNITUDE_ALPHA);
         });
-        return this.optimizeSobelDataArray(sobelData);
+        return {
+            data: sobelData,
+            width,
+            height,
+        };
     };
-    calcSobelY = () => {
+    applyKernelY = () => {
         const { kernelY } = this;
         const width = this.imageData.width;
+        const height = this.imageData.height;
         const pixelAt = this.highOrderPixelAt(this.greyscaleData, width);
         const sobelData = [];
         this.troughPixels((x, y) => {
@@ -89,11 +89,16 @@ class SobelFilter {
             const magnitude = this.calcMagnitude(0, pixelY);
             sobelData.push(magnitude, magnitude, magnitude, GREYSCALE_MAGNITUDE_ALPHA);
         });
-        return this.optimizeSobelDataArray(sobelData);
+        return {
+            data: sobelData,
+            width,
+            height,
+        };
     };
-    calcSobelXY = () => {
+    applyKernelXY = () => {
         const { kernelX, kernelY } = this;
         const width = this.imageData.width;
+        const height = this.imageData.height;
         const pixelAt = this.highOrderPixelAt(this.greyscaleData, width);
         const sobelData = [];
         this.troughPixels((x, y) => {
@@ -102,7 +107,11 @@ class SobelFilter {
             const magnitude = this.calcMagnitude(pixelX, pixelY);
             sobelData.push(magnitude, magnitude, magnitude, GREYSCALE_MAGNITUDE_ALPHA);
         });
-        return this.optimizeSobelDataArray(sobelData);
+        return {
+            data: sobelData,
+            width,
+            height,
+        };
     };
 }
 //# sourceMappingURL=SobelFilter.js.map

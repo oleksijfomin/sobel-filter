@@ -1,3 +1,8 @@
+type TImageData = {
+  data: Array<number>;
+  width: number;
+  height: number;
+};
 type TKernelX = [
   [-1,0,1],
   [-2,0,2],
@@ -22,10 +27,10 @@ class SobelFilter {
     [0,0,0],
     [1,2,1]
   ];
-  protected imageData: ImageData;
+  protected imageData: TImageData;
   protected greyscaleData: number[];
 
-  constructor(imageData: ImageData) {
+  constructor(imageData: TImageData) {
     this.imageData = imageData;
     this.greyscaleData = this.calcGrayscaleData(imageData);
   }
@@ -50,7 +55,7 @@ class SobelFilter {
     }
   }
 
-  protected calcGrayscaleData = (imageData: ImageData): number[] => {
+  protected calcGrayscaleData = (imageData: TImageData): number[] => {
     const { data, width } = imageData;
 
     const grayscaleData: number[] = [];
@@ -86,16 +91,10 @@ class SobelFilter {
     return Math.sqrt((pixelX * pixelX) + (pixelY * pixelY)) >>> 0;
   };
 
-  protected optimizeSobelDataArray = (sobelData: number[]): Array<number> | Uint8ClampedArray => {
-    if (typeof Uint8ClampedArray === 'function') {
-      return new Uint8ClampedArray(sobelData);
-    }
-    return sobelData;
-  }
-
-  public calcSobelX = (): Array<number> | Uint8ClampedArray => {
+  public applyKernelX = (): TImageData => {
     const { kernelX } = this;
     const width = this.imageData.width;
+    const height = this.imageData.height;
 
     const pixelAt = this.highOrderPixelAt(this.greyscaleData, width);
     const sobelData: number[] = [];
@@ -106,12 +105,17 @@ class SobelFilter {
       sobelData.push(magnitude, magnitude, magnitude, GREYSCALE_MAGNITUDE_ALPHA);
     });
 
-    return this.optimizeSobelDataArray(sobelData);
+    return {
+      data: sobelData,
+      width,
+      height,
+    };
   };
 
-  public calcSobelY = (): Array<number> | Uint8ClampedArray => {
+  public applyKernelY = (): TImageData => {
     const { kernelY } = this;
     const width = this.imageData.width;
+    const height = this.imageData.height;
 
     const pixelAt = this.highOrderPixelAt(this.greyscaleData, width);
     const sobelData: number[] = [];
@@ -122,12 +126,17 @@ class SobelFilter {
       sobelData.push(magnitude, magnitude, magnitude, GREYSCALE_MAGNITUDE_ALPHA);
     });
 
-    return this.optimizeSobelDataArray(sobelData);
+    return {
+      data: sobelData,
+      width,
+      height,
+    };
   };
 
-  public calcSobelXY = (): Array<number> | Uint8ClampedArray  => {
+  public applyKernelXY = (): TImageData => {
     const { kernelX, kernelY } = this;
     const width = this.imageData.width;
+    const height = this.imageData.height;
 
     const pixelAt = this.highOrderPixelAt(this.greyscaleData, width);
     const sobelData: number[] = [];
@@ -139,6 +148,10 @@ class SobelFilter {
       sobelData.push(magnitude, magnitude, magnitude, GREYSCALE_MAGNITUDE_ALPHA);
     });
 
-    return this.optimizeSobelDataArray(sobelData);
+    return {
+      data: sobelData,
+      width,
+      height,
+    };
   };
 }
