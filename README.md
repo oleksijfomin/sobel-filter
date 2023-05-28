@@ -1,6 +1,4 @@
-# sobel-filter
-
-Sobel Filter implementation in vanilla Javascript written in Typescript.
+# Computer Vision methods implementations in vanilla Javascript written in Typescript.
 
 ### Easy Run
 
@@ -8,9 +6,15 @@ Sobel Filter implementation in vanilla Javascript written in Typescript.
 2. Go to `/public` directory.
 3. Open `/index.html` file.
 
-### Implementation
-See `/src/SobelFilter.ts` in Typescript
-Javascript version bundled and included `/public/SobelFilter.js`
+### Implementations
+
+#### Sobel Filter
+See `/src/sobel-filter/SobelFilter.ts` in Typescript
+Javascript version bundled and included `/public/sobel-filter/SobelFilter.js`
+
+#### Hough Transform
+See `/src/hough-transform/HoughTransform.ts` in Typescript
+Javascript version bundled and included `/public/hough-transform/HoughTransform.js`
 
 ### Quirks
 Doesn't optimized for large image assets.
