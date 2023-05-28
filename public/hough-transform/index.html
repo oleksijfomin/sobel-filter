@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=yes">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h3>Select image to apply Hough Transform</h3>
+    <p>(not optimized for large images)</p>
+    <div>
+        <input type="file" id="file" accept="image/png, image/jpeg">
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="container-child">
+        <div class="container-canvas">
+            <h4>
+                Original Image
+            </h4>
+            <canvas class="canvas" id="canvas"></canvas>
+        </div>
+        <div class="container-canvas">
+            <h4>
+                Hough Transform (Lines)
+            </h4>
+            <canvas class="canvas" id="canvas-hough-lines"></canvas>
+        </div>
+        <div class="container-canvas">
+            <h4>
+                Hough Transform (Edges)
+            </h4>
+            <canvas class="canvas" id="canvas-hough-edges"></canvas>
+        </div>
+        <div class="container-canvas">
+            <h4>
+                Hough Transform (Circles)
+            </h4>
+            <canvas class="canvas" id="canvas-hough-circles"></canvas>
+        </div>
+    </div>
+</div>
+
+<script src="../utils.js"></script>
+<script src="HoughTransform.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

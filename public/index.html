@@ -3,51 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=yes">
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="container">
-    <h3>Select image to apply Sobel Filter</h3>
-    <p>(not optimized for large images)</p>
-    <div>
-        <input type="file" id="file" accept="image/png, image/jpeg">
-    </div>
+    <h2>Computer Vision</h2>
+    <ul>
+        <li><a href="sobel-filter/index.html">Sobel Filter</a></li>
+        <li><a href="hough-transform/index.html">Hough Transform</a></li>
+    </ul>
 </div>
 
-<div class="container-fluid">
-    <div class="container-child">
-        <div class="container-canvas">
-            <h4>
-                Original Image
-            </h4>
-            <canvas class="canvas" id="canvas"></canvas>
-        </div>
-        <div class="container-canvas">
-            <h4>
-                Sobel XY
-            </h4>
-            <canvas class="canvas" id="canvas-sobel-xy"></canvas>
-        </div>
-    </div>
-    <div class="container-child">
-        <div class="container-canvas">
-            <h4>
-                Sobel X
-            </h4>
-            <canvas class="canvas" id="canvas-sobel-x"></canvas>
-        </div>
-        <div class="container-canvas">
-            <h4>
-                Sobel Y
-            </h4>
-            <canvas class="canvas" id="canvas-sobel-y"></canvas>
-        </div>
-    </div>
-</div>
-
-<script src="./SobelFilter.js"></script>
-<script src="script.js"></script>
+<p>
+    Developed by Oleksiy Fomin oleksii.fomin@uzhnu.edu.ua
+</p>
 
 </body>
 </html>

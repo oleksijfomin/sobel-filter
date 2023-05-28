@@ -1,8 +1,3 @@
-type TImageData = {
-  data: Array<number>;
-  width: number;
-  height: number;
-};
 type TKernelX = [
   [-1,0,1],
   [-2,0,2],
