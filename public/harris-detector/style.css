@@ -1,0 +1,26 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin: 1rem;
+}
+
+.container-fluid {
+    display: flex;
+    flex-direction: column;
+}
+.container-child {
+    display: flex;
+    flex-direction: row;
+}
+.container-fluid .container-canvas {
+
+}
+.container-canvas {
+    margin: 0 1vw;
+}
+.container-canvas canvas {
+    width: 45vw;
+}

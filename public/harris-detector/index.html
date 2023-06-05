@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=yes">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h3>Select image to apply Harris Detector</h3>
+    <p>(not optimized for large images)</p>
+    <div>
+        <input type="file" id="file" accept="image/png, image/jpeg">
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="container-child">
+        <div class="container-canvas">
+            <h4>
+                Original Image
+            </h4>
+            <canvas class="canvas" id="canvas"></canvas>
+        </div>
+    </div>
+    <div class="container-child">
+        <div class="container-canvas">
+            <h4>
+                Gradients X & Y
+            </h4>
+            <canvas class="canvas" id="harris-detector-gradients-xy"></canvas>
+        </div>
+        <div class="container-canvas">
+            <h4>
+                Harris Detector (Corners)
+            </h4>
+            <canvas class="canvas" id="harris-detector-corners"></canvas>
+        </div>
+    </div>
+</div>
+
+<script src="../utils.js"></script>
+<script src="HarrisDetector.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

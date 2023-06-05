@@ -16,6 +16,10 @@ Javascript version bundled and included `/public/sobel-filter/SobelFilter.js`
 See `/src/hough-transform/HoughTransform.ts` in Typescript
 Javascript version bundled and included `/public/hough-transform/HoughTransform.js`
 
+#### Hough Transform
+See `/src/harris-detector/HarrisDetector.ts` in Typescript
+Javascript version bundled and included `/public/harris-detector/HarrisDetector.js`
+
 ### Quirks
 Doesn't optimized for large image assets.
 Canvas is super limited on read / write ops.
